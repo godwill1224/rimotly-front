@@ -1,0 +1,38 @@
+[
+    {
+      "_id": "1",
+      "userName": "Mawa Godwill",
+      "phoneNumber": "+256751680464",
+      "question": "What are the symptoms of foot and mouth disease?",
+      "createdAt": "2024-10-15T08:30:00Z"
+    },
+    {
+      "_id": "2",
+      "userName": "Jane Smith",
+      "phoneNumber": "+256782345678",
+      "question": "How can I treat my cow for mastitis?",
+      "createdAt": "2024-10-16T09:45:00Z"
+    },
+    {
+      "_id": "3",
+      "userName": "Samuel Kanyamunyoka",
+      "phoneNumber": "+256796543210",
+      "question": "What vaccinations do my goats need?",
+      "createdAt": "2024-10-17T10:15:00Z"
+    },
+    {
+      "_id": "4",
+      "userName": "Aisha Nabudere",
+      "phoneNumber": "+256703456789",
+      "question": "How can I improve milk production in my dairy cows?",
+      "createdAt": "2024-10-18T14:00:00Z"
+    },
+    {
+      "_id": "5",
+      "userName": "Peter Mukasa",
+      "phoneNumber": "+256701987654",
+      "question": "What is the best feed for poultry?",
+      "createdAt": "2024-10-19T11:20:00Z"
+    }
+  ]
+  

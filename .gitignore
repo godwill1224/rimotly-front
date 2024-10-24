@@ -1,0 +1,59 @@
+# Environment variables
+.env
+
+# Node module directory
+node_modules
+
+# Distribution directories
+dist
+dist-ssr
+
+# Local files and directories
+*.local
+
+# Editor-specific files and directories
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Log files
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Temporary files
+*.tmp
+*.swp
+*.bak
+
+# Build artifacts
+coverage
+report
+docs
+
+# Dependency-specific files
+*.yarn-lock
+*.lock
+*.pnp.js
+
+# Testing-related files
+test
+*.test.js
+*.spec.js
+*.e2e.js
+
+# Lint-related files
+*.eslintcache
+
+# Other files and directories
+*.gitkeep

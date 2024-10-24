@@ -1,0 +1,63 @@
+:root {
+  --background: #fff;
+  --text: #1A1A19;
+  --accent: #82a229;
+  --accent-hover: #6a8423;
+  --tatiary: #92a266;
+  --border: #c4cab3;
+  --shadow: 10px 10px 20px -2px #1f361a1f;
+}
+
+[data-theme='dark'] {
+  --background: #1A1A19;
+  --text: #fff;
+  --accent: #859F3D;
+  --accent-hover: #697e30;
+  --tatiary: #92a266;
+  --border: #81837e;
+  --shadow: 10px 10px 20px -2px #5ea3521c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+  margin-top: 3rem;
+}
+
+.button-container .btn {
+  padding: 0.6rem 2rem;
+  border: 1px solid var(--accent);
+  background-color: var(--accent);
+  color: #fff;
+  text-transform: capitalize;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.button-container .btn:hover {
+  border: 1px solid var(--accent-hover);
+  background-color: var(--accent-hover);
+  color: #fff;
+}

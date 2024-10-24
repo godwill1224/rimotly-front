@@ -1,0 +1,41 @@
+.container-home {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 8rem 4rem;
+    width: 100%;
+}
+
+.container-home .title-home {
+    text-align: center;
+}
+
+.container-home .title-home h1 {
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.container-home .title-home p {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.container-home .title-home span {
+    color: var(--accent);
+}
+
+@media screen and (max-width: 768px) {
+    .container-home {
+        padding: 6rem 1rem;
+    }
+
+    .container-home .title-home h1 {
+        font-weight: 700;
+        font-size: 28px;
+    }
+
+    .container-home .title-home p {
+        font-size: 16px;
+    }
+}

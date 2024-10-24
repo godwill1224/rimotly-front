@@ -1,0 +1,171 @@
+/* Container for Consultations */
+.container-consultations {
+  padding: 10rem 4rem;
+}
+
+/* Title Section */
+.title-consultations {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Consultation Table Styles */
+.consultation-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px; /* Rounded corners for the table */
+  overflow: hidden; /* Hide overflow for rounded corners */
+}
+
+/* Table Header and Cell Styles */
+.consultation-table th,
+.consultation-table td {
+  border: 1px solid #cfcfcf;
+  padding: 10px; /* Increased padding for better spacing */
+}
+
+/* Table Header */
+.consultation-table th {
+  text-align: left;
+  background-color: var(--accent); /* Header background color */
+  color: white; /* White text for contrast */
+}
+
+.consultation-table .tb-btn {
+  padding: 0.2rem 1rem;
+  border: 1px solid var(--accent);
+  background-color: var(--accent);
+  color: #fff;
+  text-transform: capitalize;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.consultation-table .tb-btn:hover {
+  border: 1px solid var(--accent-hover);
+  background-color: var(--accent-hover);
+  color: #fff;
+}
+
+/* Table Row Hover Effect */
+.consultation-table tbody tr:hover {
+  background-color: var(--border); /* Light grey background on hover */
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Modal Styling */
+.modal {
+  background: var(--background);
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: slideIn 0.3s ease;
+}
+
+/* Modal Title */
+.modal h2 {
+  margin-bottom: 10px;
+}
+
+.modal p {
+  margin-bottom: 20px;
+}
+
+/* Textarea */
+.modal textarea {
+  background: none;
+  width: 100%;
+  height: 120px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  resize: none;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+/* Textarea Focus State */
+.modal textarea:focus {
+  border-color: var(--accent); /* Change to your preferred color */
+  outline: none;
+}
+
+/* Button Container */
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+/* Button Styling */
+.modal button {
+  background-color: var(--accent); /* Primary button color */
+  border: none;
+  border-radius: 6px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Button Hover Effects */
+.modal button:hover {
+  background-color: var(--accent-hover); /* Darker shade on hover */
+  transform: translateY(-1px);
+}
+
+/* Cancel Button Styling */
+.modal button[type="button"] {
+  background-color: #ccc; /* Grey color for cancel button */
+}
+
+/* Cancel Button Hover Effects */
+.modal button[type="button"]:hover {
+  background-color: #aaa; /* Darker grey on hover */
+}
+
+/* Success Message Styling */
+.success-message {
+  color: green;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
