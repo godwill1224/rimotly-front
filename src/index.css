@@ -1,6 +1,6 @@
 :root {
   --background: #fff;
-  --text: #1A1A19;
+  --text: #4d4d4d;
   --accent: #82a229;
   --accent-hover: #6a8423;
   --tatiary: #92a266;
@@ -10,7 +10,7 @@
 
 [data-theme='dark'] {
   --background: #1A1A19;
-  --text: #fff;
+  --text: #dedede;
   --accent: #859F3D;
   --accent-hover: #697e30;
   --tatiary: #92a266;

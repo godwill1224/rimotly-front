@@ -33,23 +33,18 @@
 
 .consultation-table .tb-btn {
   padding: 0.2rem 1rem;
-  border: 1px solid var(--accent);
-  background-color: var(--accent);
-  color: #fff;
+  border: none;
+  background: none;
+  color: var(--accent);
   text-transform: capitalize;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
 }
 
 .consultation-table .tb-btn:hover {
-  border: 1px solid var(--accent-hover);
-  background-color: var(--accent-hover);
-  color: #fff;
-}
-
-/* Table Row Hover Effect */
-.consultation-table tbody tr:hover {
-  background-color: var(--border); /* Light grey background on hover */
+  color: var(--accent-hover);
 }
 
 /* Modal Overlay */
@@ -81,6 +76,7 @@
 /* Modal Title */
 .modal h2 {
   margin-bottom: 10px;
+  color: var(--tatiary);
 }
 
 .modal p {
@@ -99,6 +95,7 @@
   font-family: Arial, sans-serif;
   font-size: 14px;
   transition: border-color 0.3s ease;
+  color: var(--text);
 }
 
 /* Textarea Focus State */

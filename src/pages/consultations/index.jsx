@@ -9,15 +9,22 @@ const Consultations = () => {
   const [selectedConsultation, setSelectedConsultation] = useState(null);
   const [reply, setReply] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [loading, setLoading] = useState(false); // Add loading state
 
   const fetchConsultations = async () => {
     try {
-      const response = await fetch("/mockConsultations.json");
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/consultations`); // Fetch from the backend API
       if (!response.ok) {
         throw new Error("Failed to fetch consultations");
       }
+
       const data = await response.json();
-      setConsultations(data);
+
+      if (data.success) {
+        setConsultations(data.consultations);
+      } else {
+        throw new Error("Failed to fetch consultations");
+      }
     } catch (error) {
       console.error("Error fetching consultations:", error);
     }
@@ -30,18 +37,54 @@ const Consultations = () => {
   const handleReplyClick = (consultation) => {
     setSelectedConsultation(consultation);
     setIsModalOpen(true);
+    setReply(''); // Reset reply field when opening modal
+    setSuccessMessage(''); // Reset success message
+    setLoading(false); // Reset loading state
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setReply('');
     setSuccessMessage('');
+    setLoading(false); // Reset loading state
   };
 
-  const handleSendReply = (e) => {
+  const handleSendReply = async (e) => {
     e.preventDefault();
-    // Simulating a successful send
-    setSuccessMessage("Reply sent successfully!");
+    setLoading(true); // Set loading state to true
+
+    try {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/send-sms`, { // API endpoint for sending SMS
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          phoneNumber: selectedConsultation.phoneNumber,
+          message: reply,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send SMS");
+      }
+
+      setSuccessMessage("Reply sent successfully!");
+
+      // Update consultations array to reflect the change
+      setConsultations((prev) =>
+        prev.map((consultation) =>
+          consultation._id === selectedConsultation._id
+            ? { ...consultation, hasReplied: true } // Flag to indicate a reply was sent
+            : consultation
+        )
+      );
+    } catch (error) {
+      console.error("Error sending SMS reply:", error);
+      setSuccessMessage("Failed to send reply.");
+    } finally {
+      setLoading(false); // Reset loading state
+    }
 
     // Close the modal after a short delay for better user experience
     setTimeout(() => {
@@ -63,7 +106,7 @@ const Consultations = () => {
         <table className="consultation-table">
           <thead>
             <tr>
-              <th>Username</th>
+              <th>Session ID</th> {/* Changed from Username to Session ID */}
               <th>Phone Number</th>
               <th>Question</th>
               <th>Created At</th>
@@ -74,12 +117,18 @@ const Consultations = () => {
             {consultations.length > 0 ? (
               consultations.map((consultation) => (
                 <tr key={consultation._id}>
-                  <td>{consultation.userName}</td>
+                  <td>{consultation.sessionId}</td> {/* Changed from userName to sessionId */}
                   <td>{consultation.phoneNumber}</td>
                   <td>{consultation.question}</td>
                   <td>{new Date(consultation.createdAt).toLocaleString()}</td>
                   <td>
-                    <button onClick={() => handleReplyClick(consultation)} className="tb-btn">Send SMS Reply</button>
+                    <button
+                      onClick={() => handleReplyClick(consultation)}
+                      className="tb-btn"
+                      disabled={consultation.hasReplied} // Disable if already replied
+                    >
+                      {consultation.hasReplied ? "Send Another Reply" : "Send SMS Reply"} {/* Update button text based on reply status */}
+                    </button>
                   </td>
                 </tr>
               ))
@@ -95,8 +144,8 @@ const Consultations = () => {
         {isModalOpen && (
           <div className="modal-overlay">
             <div className="modal">
-              <h2>Reply to {selectedConsultation?.userName}</h2>
-              <p><strong>Question:</strong> {selectedConsultation?.question}</p> {/* Displaying the question */}
+              <h2>Reply to {selectedConsultation?.phoneNumber}</h2> {/* Displaying the session ID */}
+              <p><strong>Question:</strong> {selectedConsultation?.question}</p>
               <form onSubmit={handleSendReply}>
                 <textarea
                   value={reply}
@@ -105,7 +154,9 @@ const Consultations = () => {
                   required
                 ></textarea>
                 <div className="modal-actions">
-                  <button type="submit">Send</button>
+                  <button type="submit" disabled={loading}> {/* Disable button while loading */}
+                    {loading ? "Sending..." : "Send"} {/* Change button text based on loading state */}
+                  </button>
                   <button type="button" onClick={handleCloseModal}>Cancel</button>
                 </div>
                 {successMessage && <p className="success-message">{successMessage}</p>}
